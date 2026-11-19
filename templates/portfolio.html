@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Portfolio{% endblock %}
+{% block content %}
+{% with intro_title="Portfolio", intro_lead="Websites en concepten die we hebben gemaakt." %}{% include "_page_intro.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    {% include "_project_index.html" %}
+  </div>
+</section>
+{% endblock %}

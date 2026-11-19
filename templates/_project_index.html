@@ -1,0 +1,14 @@
+<ol class="project-index">
+  {% for project in projects %}
+  <li>
+    <span class="project-number">{{ "%02d" | format(loop.index) }}</span>
+    <span class="project-title">
+      {% if project.url %}<a href="{{ project.url }}">{{ project.title }}</a>{% else %}{{ project.title }}{% endif %}
+    </span>
+    <span class="project-type">{{ project.client_type }}</span>
+    <span class="project-status">{% if project.concept %}<span class="tag">Concept</span>{% endif %}</span>
+  </li>
+  {% else %}
+  <li class="project-empty">Hier komen binnenkort onze projecten.</li>
+  {% endfor %}
+</ol>

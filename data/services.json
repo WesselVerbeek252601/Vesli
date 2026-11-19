@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Nieuwe website",
+    "summary": "Een complete website voor je zaak, van ontwerp tot online. Met je openingstijden, prijslijst of menukaart en een contactformulier.",
+    "includes": ["Ontwerp in de stijl van je zaak", "Werkt op telefoon, tablet en computer", "Basisinstellingen voor Google"],
+    "price": "Op aanvraag"
+  },
+  {
+    "title": "Website vernieuwen",
+    "summary": "Je hebt al een website, maar hij is verouderd of werkt slecht op een telefoon. Wij maken hem weer van nu.",
+    "includes": ["Bestaande teksten en foto's overzetten", "Nieuw ontwerp", "Sneller laden"],
+    "price": "Op aanvraag"
+  },
+  {
+    "title": "Onderhoud",
+    "summary": "Nieuwe openingstijden of een aangepaste kaart? Stuur ons een berichtje en wij zetten het erop.",
+    "includes": ["Kleine aanpassingen", "Technische updates"],
+    "price": "Op aanvraag"
+  }
+]

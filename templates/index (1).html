@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+{% from "_macros.html" import mock_site %}
+{% block title %}Websites voor lokale ondernemers{% endblock %}
+{% block content %}
+
+{% set examples = [
+  {"key": "kapper", "label": "Kapper", "url": "salonlotte.nl"},
+  {"key": "cafe", "label": "Café", "url": "cafedelinde.nl"},
+  {"key": "lunchroom", "label": "Lunchroom", "url": "hetplein.nl"}
+] %}
+
+<!-- ========== Hero ========== -->
+<section class="hero">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="glow glow--hero" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <p class="hero-badge reveal"><span class="pulse" aria-hidden="true"></span>Websites voor ondernemers in de Drechtsteden</p>
+    <h1 class="reveal">Je zaak verdient een website van nu.</h1>
+    <p class="lead reveal">Vesli ontwerpt en bouwt websites voor kappers, cafés en lunchrooms. Snel, op elk scherm en makkelijk te vinden voor nieuwe klanten.</p>
+    <div class="button-row reveal">
+      <a class="button button--accent" href="{{ url_for('contact') }}">Plan een kennismaking</a>
+      <a class="button button--ghost" href="#voorbeelden">Bekijk de demo’s</a>
+    </div>
+  </div>
+
+  <div class="container showcase reveal">
+    <div class="showcase-tabs" role="tablist" aria-label="Voorbeeldwebsites">
+      {% for ex in examples %}
+      <button type="button" role="tab" id="show-tab-{{ ex.key }}" aria-controls="show-{{ ex.key }}"
+              aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}"
+              data-url="{{ ex.url }}">
+        {{ ex.label }}<span class="tab-progress" aria-hidden="true"></span>
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="devices">
+      <div class="device-laptop">
+        <div class="browser-bar">
+          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser-url">{{ examples[0].url }}</span>
+        </div>
+        {% for ex in examples %}
+        <div class="device-screen" role="tabpanel" id="show-{{ ex.key }}" aria-labelledby="show-tab-{{ ex.key }}" {% if not loop.first %}hidden{% endif %}>
+          {{ mock_site(ex.key) }}
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="device-phone" aria-hidden="true">
+        <span class="phone-notch"></span>
+        {% for ex in examples %}
+        <div class="device-screen" data-phone="{{ ex.key }}" {% if not loop.first %}hidden{% endif %}>
+          {{ mock_site(ex.key) }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="showcase-note">Voorbeelden. Zo kan jouw website eruitzien, op de laptop en op de telefoon.</p>
+  </div>
+</section>
+
+<!-- ========== Tools marquee ========== -->
+<section class="marquee" aria-label="Waar we mee bouwen">
+  <div class="marquee-track">
+    {% for round in range(2) %}
+    <ul {% if round == 1 %}aria-hidden="true"{% endif %}>
+      <li>Figma</li><li>Python</li><li>Flask</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub</li><li>Render</li>
+    </ul>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ========== Use cases with live demos ========== -->
+<section class="section" id="voorbeelden">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Gemaakt voor jouw soort zaak</h2>
+      <p class="lead">Elke zaak heeft andere klanten. Probeer zelf hoe jouw website kan werken.</p>
+    </div>
+
+    <div class="usecase reveal">
+      <div class="usecase-tabs" role="tablist" aria-label="Soort zaak">
+        <button type="button" role="tab" id="uc-tab-kapper" aria-controls="uc-kapper" aria-selected="true" tabindex="0">Kappers</button>
+        <button type="button" role="tab" id="uc-tab-cafe" aria-controls="uc-cafe" aria-selected="false" tabindex="-1">Cafés</button>
+        <button type="button" role="tab" id="uc-tab-lunch" aria-controls="uc-lunch" aria-selected="false" tabindex="-1">Lunchrooms</button>
+      </div>
+
+      <!-- Kapper -->
+      <div class="usecase-panel" role="tabpanel" id="uc-kapper" aria-labelledby="uc-tab-kapper">
+        <div class="usecase-text">
+          <h3>Klanten boeken zelf, jij blijft knippen.</h3>
+          <ul class="feature-list">
+            <li>Online afspraken, zonder telefoontjes tussendoor</li>
+            <li>Prijslijst en behandelingen overzichtelijk op één pagina</li>
+            <li>Je team voorstellen met foto en specialiteit</li>
+            <li>Route en openingstijden altijd actueel</li>
+          </ul>
+        </div>
+        <div class="demo demo--kapper spotlight" data-demo="booking">
+          <p class="demo-brand">Salon <em>Lotte</em></p>
+          <p class="demo-title">Afspraak maken</p>
+          <p class="demo-label">Kies een behandeling</p>
+          <div class="chip-row" data-group="treatment">
+            <button type="button" class="chip is-active" aria-pressed="true">Knippen</button>
+            <button type="button" class="chip" aria-pressed="false">Kleuren</button>
+            <button type="button" class="chip" aria-pressed="false">Föhnen</button>
+          </div>
+          <p class="demo-label">Kies een tijd, dinsdag</p>
+          <div class="chip-row" data-group="time">
+            <button type="button" class="chip" aria-pressed="false">09:30</button>
+            <button type="button" class="chip is-active" aria-pressed="true">11:00</button>
+            <button type="button" class="chip" aria-pressed="false">13:15</button>
+            <button type="button" class="chip" aria-pressed="false">15:45</button>
+          </div>
+          <button type="button" class="button button--accent demo-submit">Bevestig afspraak</button>
+          <p class="demo-result" role="status"></p>
+        </div>
+      </div>
+
+      <!-- Café -->
+      <div class="usecase-panel" role="tabpanel" id="uc-cafe" aria-labelledby="uc-tab-cafe" hidden>
+        <div class="usecase-text">
+          <h3>Je kaart, je terras en je borrel in beeld.</h3>
+          <ul class="feature-list">
+            <li>Een menukaart die we snel voor je aanpassen</li>
+            <li>Terras, borrel en groepen in de schijnwerpers</li>
+            <li>Reserveren via een eenvoudig formulier</li>
+            <li>Duidelijke informatie voor Google Maps</li>
+          </ul>
+        </div>
+        <div class="demo demo--cafe spotlight" data-demo="menu">
+          <p class="demo-brand">De Linde</p>
+          <p class="demo-title">De kaart</p>
+          <div class="chip-row" data-group="menu">
+            <button type="button" class="chip is-active" aria-pressed="true" data-menu="koffie">Koffie</button>
+            <button type="button" class="chip" aria-pressed="false" data-menu="lunch">Lunch</button>
+            <button type="button" class="chip" aria-pressed="false" data-menu="borrel">Borrel</button>
+          </div>
+          <ul class="demo-menu" data-items="koffie">
+            <li><span>Cappuccino</span><span>€ 3,40</span></li>
+            <li><span>Flat white</span><span>€ 3,90</span></li>
+            <li><span>Verse muntthee</span><span>€ 3,60</span></li>
+          </ul>
+          <ul class="demo-menu" data-items="lunch" hidden>
+            <li><span>Uitsmijter ham en kaas</span><span>€ 9,50</span></li>
+            <li><span>Tosti met tomatensoep</span><span>€ 8,75</span></li>
+            <li><span>Salade geitenkaas</span><span>€ 12,50</span></li>
+          </ul>
+          <ul class="demo-menu" data-items="borrel" hidden>
+            <li><span>Bitterballen (8)</span><span>€ 7,50</span></li>
+            <li><span>Borrelplank</span><span>€ 14,00</span></li>
+            <li><span>Nachos uit de oven</span><span>€ 9,00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lunchroom -->
+      <div class="usecase-panel" role="tabpanel" id="uc-lunch" aria-labelledby="uc-tab-lunch" hidden>
+        <div class="usecase-text">
+          <h3>Bestellen vooraf, ophalen zonder wachten.</h3>
+          <ul class="feature-list">
+            <li>Lunch bestellen om af te halen</li>
+            <li>Dagmenu en specials op de homepage</li>
+            <li>Catering aanvragen via één formulier</li>
+            <li>Gemaakt om te bestellen op je telefoon</li>
+          </ul>
+        </div>
+        <div class="demo demo--lunchroom spotlight" data-demo="order">
+          <p class="demo-brand">het plein</p>
+          <p class="demo-title">Bestel je lunch</p>
+          <ul class="order-list">
+            <li data-price="7.95"><span>Broodje gezond</span><span class="qty"><button type="button" aria-label="Minder broodje gezond">−</button><output>1</output><button type="button" aria-label="Meer broodje gezond">+</button></span></li>
+            <li data-price="5.50"><span>Tomatensoep</span><span class="qty"><button type="button" aria-label="Minder tomatensoep">−</button><output>0</output><button type="button" aria-label="Meer tomatensoep">+</button></span></li>
+            <li data-price="9.25"><span>Clubsandwich</span><span class="qty"><button type="button" aria-label="Minder clubsandwich">−</button><output>1</output><button type="button" aria-label="Meer clubsandwich">+</button></span></li>
+          </ul>
+          <p class="order-total">Totaal <strong>€ 17,20</strong></p>
+          <button type="button" class="button button--accent demo-submit">Bestelling plaatsen</button>
+          <p class="demo-result" role="status"></p>
+        </div>
+      </div>
+
+      <p class="demo-note">Interactieve demo. Er wordt niets verstuurd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Services ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Wat we voor je maken</h2>
+      <a class="text-link" href="{{ url_for('services') }}">Alle diensten</a>
+    </div>
+    <div class="card-grid">
+      {% for service in services %}
+      <article class="card spotlight reveal">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.summary }}</p>
+        <ul class="check-list">{% for item in service.includes %}<li>{{ item }}</li>{% endfor %}</ul>
+        <p class="price">{{ service.price }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========== Process ========== -->
+<section class="section">
+  <div class="container process">
+    <div class="process-head reveal">
+      <h2>Zo werken we</h2>
+      <p class="lead">Drie stappen, van eerste gesprek tot een website die live staat.</p>
+    </div>
+    <ol class="timeline">
+      <li class="reveal">
+        <h3>Kennismaken</h3>
+        <p>We komen langs of bellen even. Jij vertelt over je zaak en wat de website moet doen.</p>
+      </li>
+      <li class="reveal">
+        <h3>Ontwerpen en bouwen</h3>
+        <p>We maken een ontwerp in jouw stijl. Pas als jij tevreden bent, bouwen we de website.</p>
+      </li>
+      <li class="reveal">
+        <h3>Online</h3>
+        <p>Je website gaat live. Verandert er later iets, dan passen wij het aan.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== Work ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Ons werk</h2>
+      <a class="text-link" href="{{ url_for('portfolio') }}">Naar het portfolio</a>
+    </div>
+    {% include "_project_index.html" %}
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section">
+  <div class="container faq">
+    <h2 class="reveal">Veelgestelde vragen</h2>
+    <div class="faq-list reveal">
+      <details>
+        <summary>Wat kost een website?</summary>
+        <p>Dat hangt af van wat je nodig hebt. Na de kennismaking krijg je een prijs op maat, zodat je vooraf weet waar je aan toe bent.</p>
+      </details>
+      <details>
+        <summary>Moet ik zelf de teksten en foto’s aanleveren?</summary>
+        <p>Je weet zelf het best wat je zaak bijzonder maakt. Wij helpen met de teksten en geven tips voor goede foto’s.</p>
+      </details>
+      <details>
+        <summary>Werkt de website ook op een telefoon?</summary>
+        <p>Ja. We ontwerpen eerst voor de telefoon, omdat de meeste klanten je daar vinden.</p>
+      </details>
+      <details>
+        <summary>Wat als ik later iets wil veranderen?</summary>
+        <p>Stuur ons een berichtje. Nieuwe openingstijden of een aangepaste kaart zetten we er voor je op.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="section cta">
+  <div class="glow glow--cta" aria-hidden="true"></div>
+  <div class="container cta-inner reveal">
+    <h2>Benieuwd wat we voor jouw zaak kunnen doen?</h2>
+    <p class="lead">Een kennismaking is vrijblijvend.</p>
+    <div class="button-row">
+      <a class="button button--accent" href="{{ url_for('contact') }}">Neem contact op</a>
+      <a class="text-link" href="mailto:{{ contact_email }}">of mail naar {{ contact_email }}</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

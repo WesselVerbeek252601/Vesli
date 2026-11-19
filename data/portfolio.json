@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Concept voor een eetcafé",
+    "client_type": "Eetcafé",
+    "description": "Een nieuwe website met menukaart, openingstijden en reserveren.",
+    "image": "",
+    "url": "",
+    "concept": true
+  },
+  {
+    "title": "Concept voor een kapsalon",
+    "client_type": "Kapper",
+    "description": "Een website met prijslijst, team en online afspraak maken.",
+    "image": "",
+    "url": "",
+    "concept": true
+  },
+  {
+    "title": "Vesli",
+    "client_type": "Onze eigen website",
+    "description": "De website die je nu bekijkt, gebouwd met Flask.",
+    "image": "",
+    "url": "",
+    "concept": false
+  }
+]

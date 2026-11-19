@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Pagina niet gevonden{% endblock %}
+{% block content %}
+{% with intro_title="Deze pagina bestaat niet" %}{% include "_page_intro.html" %}{% endwith %}
+<section class="section">
+  <div class="container prose">
+    <p>Controleer het adres, of ga terug naar de <a href="{{ url_for('home') }}">homepagina</a>.</p>
+  </div>
+</section>
+{% endblock %}

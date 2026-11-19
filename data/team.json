@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Wessel",
+    "role": "Mede-oprichter",
+    "bio": "Hoi ik ben Wessel en naast mijn studie Applied Data science & AI spendeer aan de BUAS spendeer ik veel tijd aan mijn kennis vergroten op het gebied van de allerlaatste technologie. Mijn passie vloeit voort uit een drive om te creëren en werken aan problemen wat echt impact heeft.",
+    "photo": "img/wessel.jpg"
+  },
+  {
+    "name": "Elise",
+    "role": "Mede-oprichter",
+    "bio": "Hoi! Ik ben Elise, 20 jaar oud, en ik studeer Applied Data Science & AI aan Breda University of Applied Sciences (BUas). Naast mijn studie werk ik parttime als AI Specialist bij Automotive 402, waar ik me bezighoud met het toepassen van AI.Ik vind het leuk om creatieve AI oplossingen te bedenken die écht iets toevoegen. Met Vesli wil ik mijn kennis verder uitbreiden en anderen helpen om de mogelijkheden van AI te kunnen gebruiken in bijvoorbeeld hun website.",
+    "photo": "img/elise.jpg"
+  }
+]

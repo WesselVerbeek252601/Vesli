@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Diensten{% endblock %}
+{% block content %}
+{% with intro_title="Diensten", intro_lead="Van een nieuwe website tot kleine aanpassingen. Wat je nodig hebt, bespreken we samen." %}{% include "_page_intro.html" %}{% endwith %}
+<section class="section">
+  <div class="container">
+    <ul class="service-detail">
+      {% for service in services %}
+      <li>
+        <div>
+          <h2>{{ service.title }}</h2>
+          <p>{{ service.summary }}</p>
+        </div>
+        <div>
+          <ul class="check-list">
+            {% for item in service.includes %}<li>{{ item }}</li>{% endfor %}
+          </ul>
+          <p class="price">{{ service.price }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

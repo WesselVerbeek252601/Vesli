@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+{% with intro_title="Contact", intro_lead="Vertel ons over je zaak. We reageren zo snel mogelijk." %}{% include "_page_intro.html" %}{% endwith %}
+<section class="section">
+  <div class="container prose">
+    <p>Placeholder: het contactformulier komt hier op dag 3.</p>
+    <p>Mail ons intussen op <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Over ons{% endblock %}
+{% block description %}Vesli is het webbureau van Wessel en Elise, studenten Applied Data Science & AI aan BUas.{% endblock %}
+{% block content %}
+{% with intro_title="Over ons", intro_lead="Wij zijn Wessel en Elise: twee studenten met een eigen webbureau voor ondernemers in de Drechtsteden." %}{% include "_page_intro.html" %}{% endwith %}
+
+<!-- ========== Story ========== -->
+<section class="section">
+  <div class="container story">
+    <div class="story-head reveal">
+      <h2>Twee studenten, één bureau</h2>
+    </div>
+    <div class="story-text reveal">
+      <p>We studeren allebei Applied Data Science &amp; AI aan Breda University of Applied Sciences (BUas). Daar leren we programmeren, werken met data en AI-toepassingen bouwen.</p>
+      <p>Tegelijk zagen we dat veel kappers, cafés en lunchrooms in onze regio een verouderde website hebben, of helemaal geen. Zonde, want nieuwe klanten zoeken je eerst online. Daarom zijn we Vesli begonnen: we gebruiken wat we leren om lokale ondernemers een website te geven die past bij hun zaak.</p>
+      <p>Deze website hebben we trouwens zelf ontworpen en gebouwd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Team ========== -->
+<section class="section section--tight">
+  <div class="container">
+    <h2 class="reveal">Wie we zijn</h2>
+    <div class="team-grid">
+      {% for person in team %}
+      <article class="person spotlight reveal">
+        <div class="person-photo">
+          {% if person.has_photo %}
+            <img src="{{ url_for('static', filename=person.photo) }}" alt="Foto van {{ person.name }}" width="160" height="160" loading="lazy">
+          {% else %}
+            <span class="person-initial" aria-hidden="true">{{ person.name[0] }}</span>
+          {% endif %}
+        </div>
+        <div>
+          <h3>{{ person.name }}</h3>
+          <p class="person-role">{{ person.role }}</p>
+          <p>{{ person.bio }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========== What we bring ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Wat we meenemen uit onze studie</h2>
+      <p class="lead">Een website is meer dan een mooi plaatje. Onze studie helpt ons om er ook technisch iets goeds van te maken.</p>
+    </div>
+    <div class="card-grid">
+      <article class="card spotlight reveal">
+        <p class="card-kicker">Programmeren</p>
+        <h3>Zelf gebouwd, geen bouwpakket</h3>
+        <p>We schrijven onze websites zelf, met Python, HTML, CSS en JavaScript. Daardoor zijn ze snel en precies zoals jij wilt.</p>
+      </article>
+      <article class="card spotlight reveal">
+        <p class="card-kicker">Data</p>
+        <h3>Keuzes op basis van feiten</h3>
+        <p>We leren hoe je met data betere beslissingen neemt. Zo kijken we ook naar je website: wat zoeken klanten, en vinden ze het snel?</p>
+      </article>
+      <article class="card spotlight reveal">
+        <p class="card-kicker">AI</p>
+        <h3>Bij met de nieuwste technologie</h3>
+        <p>We werken in onze studie elke dag met AI. Als een slimme toepassing jouw zaak echt helpt, weten we hoe we die inbouwen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="section cta">
+  <div class="glow glow--cta" aria-hidden="true"></div>
+  <div class="container cta-inner reveal">
+    <h2>Zin om kennis te maken?</h2>
+    <p class="lead">We komen graag langs om te praten over mogelijkheden!</p>
+    <div class="button-row">
+      <a class="button button--accent" href="{{ url_for('contact') }}">Neem contact op</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
